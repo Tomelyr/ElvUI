@@ -4,6 +4,7 @@ local CH = E:GetModule("Chat");
 
 local _G = _G;
 local floor = math.floor;
+local gsub = string.gsub;
 
 local ChatHistory_GetAccessID = ChatHistory_GetAccessID;
 local Chat_GetChatCategory = Chat_GetChatCategory;
@@ -200,7 +201,7 @@ local function Chat_OnEvent(self, event, arg1, arg2, arg3, arg4, arg5, arg6, arg
 	local type = strsub(event, 10)
 	local info = ChatTypeInfo[type]
 
-	arg1 = RemoveExtraSpaces(arg1)
+	arg1 = gsub(arg1, " +", " ")
 
 	local chatGroup = Chat_GetChatCategory(type)
 	local chatTarget, body
